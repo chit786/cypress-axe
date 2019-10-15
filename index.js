@@ -72,6 +72,8 @@ Cypress.Commands.add('checkA11y', (context, options, violationCallback, skipFail
           } else {
             vDetail = vDetail + `|${violations[v].impact}| ${violations[v].id}| ${violations[v].help}| ${violations[v].helpUrl}|\n`;
           }
+        }
+        if (violations.length > 0) {
           cy.task('log',  vDetail);
         }
       }
