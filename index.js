@@ -64,8 +64,9 @@ Cypress.Commands.add('checkA11y', (context, options, violationCallback, skipFail
         cy.task('log', violations.length === 0 ? "No violations were detected!": `${violations.length} accessibility violation${
           violations.length === 1 ? '' : 's'
         } ${violations.length === 1 ? 'was' : 'were'} detected`);
+        let vDetail = "\n\n---------|impact|\t id|\t help|\t helpUrl|---------\n";
+        vDetail = vDetail + "---------------------------------------------------\n";
         for(let v = 0 ; v < violations.length ; v++) {
-          let vDetail = "|impact| id| help| helpUrl|\n"
           vDetail = vDetail + `|${violations[v].impact}| ${violations[v].id}| ${violations[v].help}| ${violations[v].helpUrl}|`;
           cy.task('log',  vDetail);
         }
