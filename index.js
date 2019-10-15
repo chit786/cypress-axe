@@ -1,4 +1,4 @@
-import addContext from 'mochawesome/addContext';
+import addContext from '../mochawesome/addContext';
 
 Cypress.Commands.add('injectAxe', () => {
   cy.window({ log: false }).then(window => {
