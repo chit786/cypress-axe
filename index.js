@@ -1,4 +1,3 @@
-const addContext = require('../mochawesome/addContext');
 
 Cypress.Commands.add('injectAxe', () => {
   cy.window({ log: false }).then(window => {
@@ -42,6 +41,7 @@ Cypress.Commands.add('checkA11y', (context, options, violationCallback, skipFail
     })
     .then((violations) => {
       Cypress.on('test:after:run', (test, runnable) => {
+          const addContext = require('../mochawesome/addContext');
           for(let v = 0 ; v < violations.length ; v++) {
               addContext({ test }, {
                   title : '"' + violations[v].impact + '"-"' + violations[v].id + '"-"' + '"-"' + violations[v].help + '"-"' + violations[v].helpUrl,
